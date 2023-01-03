@@ -1,0 +1,82 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 40px 0 0 0;
+}
+
+html, body {
+	margin: 0;
+	font-size: 24px;
+	background: white;
+	color: black;
+}
+
+header {
+	margin: 0;
+	padding: 30px 0;
+	background: #eee;
+	font-size: 1.3em;
+	word-spacing: 0.1em;
+}
+
+header > a, main {
+	display: block;
+	max-width: 800px;
+	margin: auto;
+	padding: 0 80px;
+}
+
+h1, h2 {
+	padding-top: 20px;
+}
+
+h3, p, ul, pre, img, blockquote, main > a {
+	padding: 0 0 0 30px;
+	text-align: justify;
+	line-height: 1.5;
+}
+
+pre {
+	font-size: 18px;
+	overflow-x: scroll;
+}
+
+blockquote {
+	font-weight: lighter;
+	font-style: italic;
+} 
+
+blockquote::before {
+	font-size: 1.5em;
+	padding-right: 0.5em;
+	content: "\201C";
+}
+
+a {
+	display: block;
+	overflow-wrap: break-word;
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: grey !important;
+	text-decoration: none; 
+}
+
+main > a {
+	font-weight: bold;
+}
+
+li {
+	margin-left: 2em;
+	padding-left: 1em;
+}
+
+main {
+	padding-bottom: 40px;
+}
+
+img {
+	width: 70%;
+}

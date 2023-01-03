@@ -1,0 +1,306 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="A lot has happened since I wrote my last article. The single most important event, is that I became religious. I joined the Eastern Orthodox Church." />
+		<meta name="author" content="Oliver Brotchie" />
+		<meta name="keywords" content="orthodox, minimal, digital" />
+		<link rel="stylesheet" href="../minimal.css" />
+		<link rel="icon" href="../minimal.ico" />
+		<title>Reclaiming Myself.</title>
+	</head>
+	<body>
+		<header>
+			<a href="../index.html">&#x2042; Oliver Brotchie</a>
+		</header>
+		<main>
+			<h1 id="reclaiming-myself.">Reclaiming Myself</h1>
+			<p>2nd of January 2023</p>
+			<p>A lot has happened since I wrote my last article. The single most important event, is that I became religious. I joined the Eastern Orthodox Church. Through this, I have been made aware of so many of my habitual sins. One of them, is my addiction to digital technology.</p>
+			<p>The Church’s function is to give spiritual guidance. To lead us away from death. It provides a path towards Theosis. Theosis directly translates to “becoming God”. It is to move from the image, to the likeness of God. This is what is meant by the concept of Sainthood. It is the ultimate goal of every Christian.</p>
+<blockquote>In the Orthodox Church, the salvation of man is understood as his
+deification.</blockquote>
+<blockquote>We must learn to live the eternal life of God Himself. What does the
+deification of man mean? It means to live as the Lord lived, to make our
+own the thoughts and feelings of Christ, especially as we see Him in the
+last moments of His life on earth.</blockquote>
+<p>Saint Sophrony (Sakharov) the Athonite: “Words of Life”.</p>
+<h2 id="what-this-article-is-about.">What this article is about.</h2>
+<p>The point of this article is to talk about the steps that I have
+taken to minimise my addiction to digital technology. I am neither
+Priest, nor Monastic and hence I should not give spiritual advice. I
+still live in this world; I must discover Holiness in within it. I can
+only describe to you the steps that I have taken and hope that they may
+inspire action. I reap the seeds that I sow. I do not prescribe the
+seeds of your harvest.</p>
+<p>I have tried to keep this article self-contained, but please note
+that these changes did not happen in a vacuum. Rather, as part of a
+wider change in mindset, lifestyle and identity. I had been a strong
+Atheist my entire life, until a year ago. Please also note that this is
+not self help advice. Help is sorely needed in modernity. But modern
+“self help”, misses much of the core truth. No true and permanent change
+in us can happen without The Grace of God.</p>
+<h2 id="our-current-predicament.">Our current predicament.</h2>
+<p>The internet promised unlimited information, anything and everything
+you could ever want to know. Infinite feeds of curated content, flashing
+lights, pretty colours, constant notifications… and a complete and
+insatiable addiction to scrolling on video and social content. We all
+know that digital technology is a curse upon our existence, a blight
+upon our productivity, a cancer to our attention. We are enslaved to the
+screens that surround us in a very real sense.</p>
+<p>I love digital technology, it is both my job and my passion. I am a
+software developer by day and a software developer by night. I love
+nothing more than building the perfect solution to one of my problems.
+But programming is a terrifying art. It is as close to playing God that
+humanity has ever come. In recent days, I have made a conscious and
+consistent effort to move away from my addiction to all things digital,
+and a return to all things analogue.</p>
+<h2 id="the-steps-i-have-taken.">The steps I have taken.</h2>
+<p>These are the steps that I have taken to reduce my dependency on
+digital technology, listed in chronological order. These steps are by no
+means perfect or finalised, so I will describe only what I have in place
+now.</p>
+<h3 id="unsubscribe-from-the-unimportant.">Unsubscribe from the
+unimportant.</h3>
+<p>I started taking this step quite a long time ago, but it is only now
+that my foot has landed. It started out by removing the apps that I knew
+were harmful to me. I swore an oath with a friend to uninstall and stay
+off one app, if he uninstalled and stayed off another.</p>
+<p>I also started to mute sources of constant notification. I mute all
+group chats. I mute noisy applications. I mute text channels that are
+constantly busy. I unsubscribe from all emails. These days, when I get a
+notification, it is something that I should actually read.</p>
+<h3 id="block-what-is-harmful.">Block what is harmful.</h3>
+<a href="https://github.com/OliverBrotchie/block-list">https://github.com/OliverBrotchie/block-list</a>
+<p>Block-list is an very simple website blocking tool. I wrote it as my
+first foray into Rust programming. The tool is of poor quality, but it
+provides the basic functionality that I need. So, for the time being, I
+have written a couple shell scripts to hack together the required
+further functionality.</p>
+<ul>
+	<li>~/.bin/conf/streaming</li>
+</ul>
+<pre># Streaming block-list
+0.0.0.0 www.youtube.com
+0.0.0.0 youtube.com
+0.0.0.0 www.netflix.com
+0.0.0.0 netflix.com</pre>
+<p>This list blocks the two websites that comprised the majority of my
+addiction. When a list is piped into block-list, it will replace any
+addresses following the “# Block List” comment in your hosts file with
+said list. At the time, I found that using this tool in isolation was
+too cumbersome. It required too much typing every time I wanted to turn
+it off or on. So, after a while, I stopped using it.</p>
+<ul>
+	<li>~/.bin/streaming</li>
+</ul>
+<pre>#!/bin/sh
+
+if [ &quot;$1&quot; == &quot;on&quot; ]; then
+    echo &quot;Streaming block-list: on.&quot;;
+
+    # Enable blocking.
+    cat ~/.bin/conf/streaming | block-list /etc/hosts;
+elif [ &quot;$1&quot; == &quot;off&quot; ]; then
+    echo &quot;Streaming block-list: off.&quot;;
+
+    # Disable blocking.
+    block-list /etc/hosts;
+else
+    echo &quot;Streaming block-list: unknown input.&quot;;
+fi</pre>
+<p>It took me a long time to properly tackle my digital addiction. Part
+of it is that it is a habitual sin, it is hard to knock, but the other
+part of it is that redesigning a program in Rust takes time and effort.
+So, instead of re-writing the program, which would take more time, I
+decided that a stopgap solution of a shell script would be best. This
+was the initial piece of functionality that I wrote. Instead of having
+to type in the full command every time I wanted block or unblock
+streaming websites, I would instead type either:</p>
+<pre><code>streaming on</pre>
+<p>OR</p>
+<pre>streaming off</pre>
+<ul>
+	<li>~/.bin/streamoff</li>
+</ul>
+<pre>#!/bin/sh
+
+echo &quot;Disabling blocking for: $1 mins ⌛️&quot;
+
+# Disable blocking.
+~/.bin/streaming off 1&gt; /dev/null
+
+# After sleeping for $1 minutes, enable blocking.
+sleep $(expr $1 \* 60) &amp;&amp; ~/.bin/streaming on 1&gt; /dev/null &amp;</code></pre>
+<p>I used the previous script for a while, but I found that I would
+forget to block the service after a video and get absorbed into others.
+What I have settled on is the above script. I have streaming websites
+blocked by default. If I want to watch something, I use the script to
+unblock the website for the duration of the video. After the time is up,
+the script will then come out of sleep and re-apply the block-list.</p>
+<pre>streamoff 20</pre>
+<h3 id="download-music.">Download music.</h3>
+<p>It was not long ago that we owned our own music. We had physical
+analogue copies stored in our homes. However, physically owning records
+had its “drawbacks”.</p>
+<p>For a start, they are quite large, they take up space, limiting how
+many one household can feasibly keep. Playing music on a record player
+meant that you had to physically pick out the album that you wanted to
+listen to and physically put it in the record player. If you wanted to
+listen to music multiple times, you had to look after the record by
+placing it back in its sleeve. If you wanted to own or discover new
+music, you had to go, in person, to your local record store or borrow a
+copy from friends or family. If you wanted to listen to music, you had
+to make an occasion of it, by sitting down and listening to it. If you
+wanted to listen to just one song in particular, you had to listen to
+the whole album in sequence.
+<blockquote>What a pain! How very outdated is this concept of owning your own
+music in modernity.</blockquote>
+<p>Buying a record collection takes time and money. For the time being,
+I download my music via “youtube-dl”. Youtube-dl is a free and
+open-source command line utility, that allows you to download videos or
+music from YouTube and elsewhere. I use it to download the albums and
+singles that I listen to in a compact “webm” format. Here is the
+simplified structure of my music directory:</p>
+<pre>Music
+│── orthodox
+│  ├── album
+│  │   ├── chad-orthodox.webm
+│  │   ├── hyms-to-the-mother-of-god.webm
+│  │   └── monastics-of-athos-chanting.webm
+│  ├── anaphora.webm
+│  ├── agni-parthene.webm
+│  ├── let-my-prayer-arise.webm
+│  ├── prayer-rope-anthem.webm
+│  ├── prokeimenon.webm
+│  ├── psalm-102.webm
+│  ├── psalm-135.webm
+│  └── psalm-50.webm
+└── world
+    ├── oidupaa-vladimir-oiun
+    │   └── album
+    │       └── divine-music-from-jail.webm
+    └── vulf
+        └── album
+            ├── here-we-go-jack.webm
+            └── klezmer-klezmer-klezmer.webm</pre>
+<p>I keep a strong distinction between “worldly” music and Orthodox
+chants. I preferentially download albums or compilations of music,
+keeping them in their own “album” folder. I keep “singles” floating
+loosely in the artists’ folders and attempt to keep their number to a
+minimum. When I listen to music, I make an occasion of it. I sit down
+and I listen to it. If I listen to an album, I will listen to all of it.
+If I listen to a single, I will try to listen to all the singles stored
+in that folder. I use “lf” to select the file I wish to play and I use
+“vlc” as my media player. To download music, I use the following
+command:</p>
+<pre>youtube-dl -f 251 https://www.youtube.com/watch?v=Qjop9r2knWc</pre>
+<h3 id="follow-people-in-writing.">Follow people in writing.</h3>
+<p>Follow people. Do not follow a “feed” that is created for you. That
+is accidie, a lack of care about one’s salvation. Furthermore, I aim to
+only follow people who produce work that is actively beneficial for me.
+I also aim to read physical books more often. There is a strong
+difference in the substance and addictiveness of visual and written
+content.</p>
+<p>I consume content via “Really Simple Syndication”. RSS is computer
+readable format that allows you to follow individual’s work in a
+decentralised manner. If you search the logo of RSS you will likely
+recognise it, even if you never knew what it was. I use a tool called
+“newsboat” to consume RSS from the terminal. This is my newsboat urls
+file:</p>
+<pre>---Blogs---
+https://lukesmith.xyz/index.xml blogs
+https://solar.lowtechmagazine.com/feeds/all-en.atom.xml blogs
+https://blog.rust-lang.org/feed.xml blogs
+
+---Gemini---
+https://proxy.vulpes.one/gemini/gemini.circumlunar.space/users/solderpunk/gemlog/atom.xml gemini
+
+---Videos---
+https://videos.lukesmith.xyz/feeds/videos.xml?sort=-publishedAt&amp;isLocal=true videos
+https://odysee.com/$/rss/@AlphaNerd:8 videos
+
+---Youtube_(requires_unblocking)---
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMb0O2CdPBNi-QqPk5T3gsQ youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCu7_D0o48KbfhpEohoP7YSQ youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCs6A_0Jm21SIvpdKyg9Gmxw youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9pgQfOXRsp4UKrI8q0zjXQ youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnniUmgeeFG6Bcir8ootwRQ youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxr2d4As312LulcajAkKJYw youtube</pre>
+<p>The Gemini protocol is an alternative to the modern web. It is like
+the modern web but done right. It is designed for people. Some of the
+best articles I have read have come from there. I strongly dislike the
+name of the Gemini protocol, but it is a very good reminded for me to
+not overuse it. Nonetheless, I recommend that you give their website a
+read and give the Gemini protocol a try:</p>
+<a href="https://gmi.skyjake.fi/lagrange">https://gmi.skyjake.fi/lagrange</a>
+<h3 id="a-black-and-white-filter.">A black and white filter.</h3>
+<p>A tip from a friend: only use your computer and phone through a black
+and white filter. Perhaps the easiest step to follow, and one of the
+most effective ones. You would be surprised by how much of an effect
+colour has on how consuming our devices are. This step draws a clear
+distinction between the digital and the real world. The only exception I
+make to this rule is when I am watching a film, or others are using my
+device.</p>
+<p>You can apply this step on most devices today. It is usually listed
+under settings in “display” or “accessibility”. I tend to use a dark
+theme for most functions. When coding and reading articles, I will use a
+high contrast theme so that I do not strain my eyes.</p>
+<p>I often worry about missing the “context” of colour when using this
+technique. This fear is almost always unwarranted, but, it has given me
+a new-found appreciation for accessibility. We should always try to keep
+our design as simple as possible, letting the end-user customise its
+complexity to their liking.</p>
+<h2 id="my-next-step.">My next step.</h2>
+<p>I will be setting up a small but free invite-only server for the
+promotion of tech minimalism. It will be for blog,
+email and XMPP hosting. I will only be hosting people that I know in
+real life. If you know me and are interested in having an account,
+please contact me. By the time you read this article, I will also have
+removed my old blog posts. I pray that these writings will provide you
+with food for action.</p>
+<h2 id="closing-thoughts.">Closing thoughts.</h2>
+<p>It is the act of climbing the ladder, no matter how slowly, no matter
+how many times that we slip, which brings us closer to God. We are
+either climbing upwards or we are slipping downwards, there is no
+staying stationary. These steps are not finished stone, they are only
+what I have carved out today. I am not struggling up these steps or
+writing this article as a surrogate activity, I struggle up these steps
+because it brings me closer to God. The point of taking these steps, is
+to make the world my desert.</p>
+<h2 id="inspiration.">Inspiration.</h2>
+<h3 id="low-tech-magazine.">Low-tech Magazine.</h3>
+<p>A great little solar powered blog. They have excellent and well
+researched articles. They are one source that got me thinking about the
+analogue.</p>
+<a href="https://solar.lowtechmagazine.com">https://solar.lowtechmagazine.com</a>
+<h3 id="solderpunk">Solderpunk.</h3>
+<p>Solderpunk is the creator of the Gemini protocol. I strongly suggest
+that you read some of his articles. Whilst he has many worldly views,
+Solderpunk is someone who has dedicated a lot of time and energy to tech
+minimalism. It has most definitely paid off.</p>
+<a href="gemini://gemini.circumlunar.space/~solderpunk">gemini://gemini.circumlunar.space/~solderpunk</a>
+<h3 id="luke-smith.">Luke Smith.</h3>
+<p>Luke is an outstanding creator and someone who I genuinely look up
+to. He talks about technology, computing, philosophy, linguistics and
+theology. He produced an episode of his “Not Related” podcast titled:
+“Stoicism and Christianity: Trust the Logos!”. This video broke me from
+the prison of the purely physical. In conjunction with the music below, 
+this guided me to start attending Church. Whilst at the time he was a
+Roman Catholic, he has since converted to Orthodox Christianity.</p>
+<a href="https://lukesmith.xyz">https://lukesmith.xyz</a>
+<h3 id="the-orthodox-church.">The Orthodox Church.</h3>
+<p>If you do nothing else from this article, please listen to the music
+listed below. When I decided to join the Orthodox Church, I was an
+Atheist. I searched: “Orthodox Churches in Edinburgh”. I walked to Two
+Meadow Lane. Nobody was in. I would not let that desist me. I walked
+over to the nearby Thirty-three Chapel Street. I hurried up to the front
+door, on a cold November evening, and knocked. Bishop Raphael, my
+Father, opened it. I have been there, struggling up these steps, ever
+since.</p>
+<a href="https://www.youtube.com/watch?v=_xaj8QSJZ0E">https://www.youtube.com/watch?v=_xaj8QSJZ0E</a>
+<p>+ May God bless you. +</p>
+		</main>
+	</body>
+</html>
