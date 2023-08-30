@@ -1,0 +1,13 @@
+# Oliver Brotchie.
+
+=> /oliver.png
+
+Welcome to my blog! I write about tech minimalism and Orthodoxy. Please find a list of my articles, my RSS feed and links to find me elsewhere below.
+
+## Links.
+
+My blog:
+
+=> blog/index.gmi
+
++ May God Bless you. +
