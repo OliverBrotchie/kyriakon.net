@@ -55,7 +55,7 @@ a {
 	display: block;
 	overflow-wrap: break-word;
 	color: black;
-	text-decoration: underline dotted 1.5px;
+	text-decoration: underline 1.5px;
 	text-underline-offset: 0.3em;
 }
 
