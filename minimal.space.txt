@@ -1,0 +1,53 @@
+;;
+;; Domain:     minimal.space.
+;; Exported:   2024-11-23 15:10:42
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+minimal.space	3600	IN	SOA	kayleigh.ns.cloudflare.com. dns.cloudflare.com. 2048404124 10000 2400 604800 3600
+
+;; NS Records
+minimal.space.	86400	IN	NS	kayleigh.ns.cloudflare.com.
+minimal.space.	86400	IN	NS	leonidas.ns.cloudflare.com.
+
+;; A Records
+minimal.space.	1	IN	A	70.34.198.9
+oliver.minimal.space.	1	IN	A	70.34.198.9
+
+;; AAAA Records
+*.minimal.space.	1	IN	AAAA	2a05:f480:2000:2f77:5400:4ff:fe38:be51
+minimal.space.	1	IN	AAAA	2a05:f480:2000:2f77:5400:4ff:fe38:be51
+www.minimal.space.	1	IN	AAAA	2a05:f480:2000:2f77:5400:4ff:fe38:be51
+
+;; MX Records
+minimal.space.	1	IN	MX	59 route3.mx.cloudflare.net.
+minimal.space.	1	IN	MX	1 route2.mx.cloudflare.net.
+minimal.space.	1	IN	MX	26 route1.mx.cloudflare.net.
+oliver.minimal.space.	1	IN	MX	59 route3.mx.cloudflare.net.
+oliver.minimal.space.	1	IN	MX	1 route2.mx.cloudflare.net.
+oliver.minimal.space.	1	IN	MX	26 route1.mx.cloudflare.net.
+
+;; TXT Records
+_dmarc.minimal.space.	1	IN	TXT	"v=DMARC1;  p=none; rua=mailto:0cf1d298bc7842dba98b3be0dff69d6d@dmarc-reports.cloudflare.net"
+minimal.space.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net ~all"
+oliver.minimal.space.	1	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net ~all"
